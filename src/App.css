@@ -3,6 +3,8 @@
 }
 
 .postList__comments {
-  border: 1px solid red;
+  display: block;
+}
+.postList__comments-none {
   display: none;
 }
