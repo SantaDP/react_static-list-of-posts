@@ -3,7 +3,7 @@ import './App.css';
 import postsFromServer from './posts';
 import usersFromServer from './users';
 import commentsFromServer from './comments';
-import PostList from './PostList'
+import PostList from './components/PostList'
 
 
 
@@ -30,7 +30,7 @@ class App extends React.Component {
     const { posts } = this.state;
     return (
       <div className="App">
-        <h1>Post List</h1>
+        <h1 className="post--list__title">Post List</h1>
         <PostList 
           items={posts}
         />

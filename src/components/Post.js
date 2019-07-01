@@ -20,7 +20,7 @@ class Post extends React.Component {
 
   render() {
     return (
-      <section>
+      <section className="post--list__post">
         <h2>{this.state.item.title}</h2>
         <p>{this.state.item.body}</p>
         <User user={this.state.item.user} />
