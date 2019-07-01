@@ -14,14 +14,15 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({
-      posts: this.getPostsWithUsers(postsFromServer, usersFromServer),
+      posts: this.getPostsWithUsersAndComments(postsFromServer, usersFromServer, commentsFromServer),
     });
   }
 
-  getPostsWithUsers(posts, users) {
+  getPostsWithUsersAndComments(posts, users, comments) {
     return posts.map(post => ({
         ...post,
         user: users.find(user => user.id === post.userId),
+        comments: [...comments.filter(comment => comment.postId === post.id)]
       }));
   }
 
