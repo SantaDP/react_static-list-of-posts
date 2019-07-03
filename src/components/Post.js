@@ -5,12 +5,12 @@ import CommentList from './CommentList';
 class Post extends React.Component {
   state = {
     item: this.props.item,
-    comments: this.props.item.comments.map(coment =>({...coment, visibile:false})) 
+    comments: this.props.item.comments.map(comment =>({...comment, visibile:false})) 
   }
   
-  handleShowComments = () =>{
+  handleShowComments = (id) =>{
     const copyComments = [...this.state.comments]
-    copyComments.map(coment=>(coment.visibile = !coment.visibile))
+    copyComments.map(comment=>(comment.visibile = !comment.visibile))
     this.setState(()=> {
       return {
         comments: copyComments,
@@ -21,15 +21,12 @@ class Post extends React.Component {
   render() {
     return (
       <section className="post--list__post">
-        <h2>{this.state.item.title}</h2>
-        <p>{this.state.item.body}</p>
         <User user={this.state.item.user} />
-        <div>
-          <button onClick={this.handleShowComments}> Comments - {this.state.item.comments.length}</button>
-        </div>
+        <h2 className="post--list__post--title">{this.state.item.title}</h2>
+        <p>{this.state.item.body}</p>
+          <button className="post--list__post-btn" onClick={()=>this.handleShowComments(this.state.item.id)}> Comments - {this.state.item.comments.length}</button>
         <CommentList 
           comments={this.state.comments} 
-          postId={this.state.item.id} 
           visibile={this.state.comments[0].visibile} 
         />
       </section>
